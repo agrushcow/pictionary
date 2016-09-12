@@ -1,0 +1,154 @@
+#container {
+  height:45em;
+  width:80%;
+  border:1px solid black;
+  margin:0 auto;
+  font-family: cursive;
+}
+
+#logoBlock {
+  height:3.5em;
+  width:100%;
+  border-bottom:1px solid black;
+  padding-top:0.75em;
+  color:white;
+  /*how to add background-color with border-radius*/
+}
+
+.logo {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bolder;
+  margin-top:0.25em;
+}
+
+#speaker {
+  width:7em;
+  height:0.6em;
+  border:1px solid black;
+  margin:0 auto;
+  border-radius:25%;
+  background-color:silver;
+  border-color:white;
+}
+
+.notification {
+  border-radius: 50%;
+  height:1em;
+  width:1em;
+  background-color:red;
+}
+
+#banner {
+  height:5%;
+}
+
+#banner h2 {
+  text-align: center;
+  margin:0;
+  color:white;
+  background-color: red;
+}
+
+#connections {
+  float:left;
+  width:20%;
+  text-align: center;
+}
+
+#connections span {
+  font-size: 1.5em;
+  border: 1px solid black;
+  text-align: center;
+  padding:0.5em;
+  border-radius: 50%;
+}
+
+.content {
+  width:55%;
+  height:98.6%;
+  border:5px solid silver;
+  border-radius: 10%;
+  margin:0 auto;
+  background-color:black;
+}
+
+.convo {
+  height:72%;
+  width:99.6%;
+  border:1px solid black;
+  overflow-wrap:break-word;
+  overflow-y:scroll;
+  background-color: ghostwhite;
+}
+
+.send {
+  width:100%;
+  display:flex;
+}
+
+#text {
+  width:80%;
+  height:2em;
+  text-indent: 1em;
+}
+
+#submit {
+  height:2.4em;
+  width:19.15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;z
+}
+
+#homeBlock {
+  height:3.75em;
+  width:83%;
+  margin:0 auto;
+  display:flex;
+}
+
+.left, .center, .right {
+  height:100%;
+}
+
+.left, .right {
+  width:25%;
+}
+
+.center {
+  width:48%;
+}
+
+.left div, .right div {
+  height:40%;
+  width:50%;
+  border:3px solid black;
+  border-color: silver;
+  margin:0 auto;
+  margin-top:1.15em;
+}
+
+.center div {
+  width:80%;
+  height:60%;
+  border:3px solid silver;
+  background-color:black;
+  border-radius:40%;
+  margin:0 auto;
+  margin-top:0.5em;
+}
+
+/*
+.button-left {
+  border:1px solid black;
+  width:16%;
+  height:1.5em;
+  margin:1.2em 0 0 1em;
+}
+
+.home {
+  border:3px solid silver;
+  width:5em;
+  height:2em;
+}*/

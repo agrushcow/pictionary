@@ -1,0 +1,43 @@
+<!doctype html>
+<title>Chatroom</title>
+<meta charset="utf-8">
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="style.css">
+<!-- JS -->
+<script src="//code.jquery.com/jquery-2.1.0.js"></script>
+<script src="main.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<section id="container">
+  <div id="connections">
+    <h3>Total Online</h3>
+    <span></span>
+  </div>
+    <div class="content">
+      <div id="logoBlock">
+        <div id="speaker">
+        </div>
+        <div class="logo">
+          <span>SAMSUNG</span>
+        </div>
+      </div>
+      <div id="banner">
+        <h2>Thinkful chat</h2>
+      </div>
+      <div class="convo">
+        <div id="messages"></div>
+        <div id="typing"></div>
+      </div>
+      <div class="send">
+        <input type="text" id="text">
+        <button id="submit">
+          <span>Send</span>
+        </button>
+      </div>
+    <div id="homeBlock">
+      <div class="left"><div></div></div>
+      <div class="center"><div></div></div>
+      <div class="right"><div></div></div>
+    </div>
+    </div>
+</section>

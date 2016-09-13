@@ -10,6 +10,10 @@ var io = socket_io(server);
 
 io.on('connection', function (socket) {
     console.log('Client connected');
+
+    socket.on('draw', function(position) {
+      socket.broadcast.emit('draw', position);
+    });
 });
 
 server.listen(process.env.PORT || 8080);

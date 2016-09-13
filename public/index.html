@@ -1,43 +1,48 @@
 <!doctype html>
-<title>Chatroom</title>
+<title>Pictionary</title>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #1E2835;
+    background-color: #F8F8F8;
+    font-size: 1.5em;
+}
+
+h1 {
+    background-color: #9ABBFF;
+    margin:  0 0 20px 0;
+    padding: 20px;
+    text-align: center;
+}
+
+#top-message {
+    text-align: center;
+    padding: 10px;
+}
+
+canvas {
+    width: 800px;
+    height: 600px;
+    border: 1px #C7CACD solid;
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
 <!-- JS -->
 <script src="//code.jquery.com/jquery-2.1.0.js"></script>
-<script src="main.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js"></script>
 <script src="/socket.io/socket.io.js"></script>
+<script src="main.js"></script>
 
-<section id="container">
-  <div id="connections">
-    <h3>Total Online</h3>
-    <span></span>
-  </div>
-    <div class="content">
-      <div id="logoBlock">
-        <div id="speaker">
-        </div>
-        <div class="logo">
-          <span>SAMSUNG</span>
-        </div>
-      </div>
-      <div id="banner">
-        <h2>Thinkful chat</h2>
-      </div>
-      <div class="convo">
-        <div id="messages"></div>
-        <div id="typing"></div>
-      </div>
-      <div class="send">
-        <input type="text" id="text">
-        <button id="submit">
-          <span>Send</span>
-        </button>
-      </div>
-    <div id="homeBlock">
-      <div class="left"><div></div></div>
-      <div class="center"><div></div></div>
-      <div class="right"><div></div></div>
-    </div>
-    </div>
-</section>
+<div id="main">
+    <h1>Pictionary</h1>
+    <canvas id="canvas"></canvas>
+</div>

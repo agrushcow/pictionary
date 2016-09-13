@@ -73,13 +73,22 @@
   background-color:black;
 }
 
+#messages {
+  text-indent: 1em;
+  margin-top:0.5em;
+}
+
+#typing {
+  text-indent: 1em;
+}
+
 .convo {
   height:72%;
   width:99.6%;
   border:1px solid black;
   overflow-wrap:break-word;
   overflow-y:scroll;
-  background-color: ghostwhite;
+  background-color: lavender;
 }
 
 .send {

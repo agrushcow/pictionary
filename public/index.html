@@ -34,6 +34,13 @@ canvas {
     display: block;
     margin: 0 auto;
 }
+
+#role {
+  height:1em;
+  width:5em;
+  border:1px solid black;
+  display:inline-block;
+}
 </style>
 
 <!-- JS -->
@@ -43,6 +50,13 @@ canvas {
 <script src="main.js"></script>
 
 <div id="main">
-    <h1>Pictionary</h1>
-    <canvas id="canvas"></canvas>
+  <h1>Pictionary</h1>
+  <div id="top-message">
+      <div id="guess">
+          Make a guess: <input type="text">
+          <div id="role"></div>
+      </div>
+      <div id="guesses"></div>
+  </div>
+  <canvas id="canvas"></canvas>
 </div>

@@ -1,40 +1,68 @@
 var pictionary = function() {
-    var canvas, context;
     var socket = io();
+    var canvas, context;
     var drawing = false;
 
     var draw = function(position) {
         context.beginPath();
-        context.arc(position.x, position.y,
-                         6, 0, 2 * Math.PI);
+        context.arc(position.x, position.y, 6, 0, 2 * Math.PI);
         context.fill();
     };
 
+    // setup canvas and context
     canvas = $('canvas');
     context = canvas[0].getContext('2d');
     canvas[0].width = canvas[0].offsetWidth;
     canvas[0].height = canvas[0].offsetHeight;
     canvas.on('mousemove', function(event) {
-      var offset = canvas.offset();
-        if (drawing == false) {
-          return;
+        if (!drawing) {return;}
+        var offset = canvas.offset();
+        var position = {x: event.pageX - offset.left, y: event.pageY - offset.top};
+        draw(position);
+        socket.emit('draw', position);
+    });
+
+    canvas.on('mousedown', function() {
+        drawing = true;
+    });
+
+    canvas.on('mouseup', function(){
+        drawing = false;
+    });
+
+    var guessBox = $('#guess input');
+    var guesses = $('#guesses');
+
+    var addGuess = function(guess) {
+      guesses.text(guess);
+    };
+
+    var onKeyDown = function(event) {
+        if (event.keyCode != 13) { // Enter
+            return;
         } else {
-          var position = {x: event.pageX - offset.left,
-                          y: event.pageY - offset.top};
-          draw(position);
-          socket.emit('draw', position);
-        }
-    });
+        socket.emit('guess', guessBox.val());
+        guessBox.val('');
+      }
+    };
+    guessBox.on('keydown', onKeyDown);
 
-    canvas.on('mousedown', function(event) {
-      drawing = true;
-    });
+    //Assign roles
+    var rolesBlock = $('#roles');
 
-    canvas.off('mouseup', function (event) {
-      drawing = false;
-    });
+    var assignDraw = function() {
+      rolesBlock.text("Drawer");
+      console.log("draw");
+    };
 
-socket.on('draw', draw);
+    var assignGuess = function() {
+      rolesBlock.text("Guesser");
+    };
+
+    socket.on('draw', draw);
+    socket.on('guess', addGuess);
+    socket.on('drawer', assignDraw);
+    socket.on('guesser', assignGuess);
 };
 
 $(document).ready(function() {

@@ -8,11 +8,25 @@ app.use(express.static('public'));
 var server = http.Server(app);
 var io = socket_io(server);
 
+var connectionCount = 0;
+
 io.on('connection', function (socket) {
     console.log('Client connected');
+    connectionCount++;
+    if (connectionCount == 1) {
+      socket.role = 'drawer';
+      socket.emit("drawer");
+    } else {
+      socket.role = 'guesser';
+      socket.emit('guesser');
+    }
 
     socket.on('draw', function(position) {
       socket.broadcast.emit('draw', position);
+    });
+
+    socket.on('guess', function(guess) {
+      socket.broadcast.emit('guess', guess);
     });
 });
 

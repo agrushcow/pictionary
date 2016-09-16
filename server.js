@@ -9,6 +9,7 @@ var server = http.Server(app);
 var io = socket_io(server);
 
 var connectionCount = 0;
+var word;
 
 io.on('connection', function (socket) {
     console.log('Client connected');
@@ -21,12 +22,27 @@ io.on('connection', function (socket) {
       socket.emit('guesser');
     }
 
+    socket.on('disconnect', function() {
+        connectionCount--;
+        console.log('A user has disconnected');
+    });
+
     socket.on('draw', function(position) {
       socket.broadcast.emit('draw', position);
     });
 
     socket.on('guess', function(guess) {
-      socket.broadcast.emit('guess', guess);
+      if (guess == word) {
+        socket.role = 'drawer';
+        socket.emit('drawer');
+        socket.broadcast.emit('guesser');
+      } else {
+        socket.broadcast.emit('guess', guess);
+      }
+    });
+
+    socket.on('selection', function(selection) {
+      word = selection;
     });
 });
 

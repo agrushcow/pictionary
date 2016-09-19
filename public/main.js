@@ -90,13 +90,17 @@ var pictionary = function() {
     var assignDraw = function() {
       rolesBlock.text("Drawer");
       socket.role = "drawer";
+      alert("You are now the drawer");
       guessSpan.html('Please select a word from the list: ');
+      context.clearRect(0,0,600,400);
     };
 
     var assignGuess = function() {
       rolesBlock.text("Guesser");
       socket.role = "guesser";
+      alert("You are now the guesser");
       guessSpan.html('Make a guess:');
+      context.clearRect(0,0,600,400);
     };
 
     socket.on('draw', draw);
